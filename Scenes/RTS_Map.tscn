@@ -1,0 +1,102 @@
+[gd_scene load_steps=6 format=3 uid="uid://1oagukxun6do"]
+
+[ext_resource type="Script" path="res://Scripts/RtsManager.gd" id="1_wgis4"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_oov5a"]
+vertices = PackedVector3Array(-2, 0.5, 2.5, -2, 0.75, 1, -2.25, 0.75, 1.5, -3, 0.5, 2.25, -2, 0.5, 2.5, -2.25, 0.75, 1.5, -3.25, 0.5, 1.5, -3.25, 0.5, 1.5, -3.25, 0.5, -0.5, -3.75, 0.5, -2.5, -4.5, 0.5, -4.5, -4.5, 0.5, 4.5, -1.5, 0.5, 4.5, -2, 0.75, 3, -2.25, 0.75, 3.5, -3.75, 0.5, -3.75, -2.75, 0.5, -4, -2.75, 0.5, -4.5, -4.5, 0.5, -4.5, -3.75, 0.5, -2.5, -3.75, 0.5, -3.75, -4.5, 0.5, -4.5, -3.25, 0.5, -0.5, -2.5, 0.5, -0.75, -2.5, 0.5, -2.25, -3.75, 0.5, -2.5, -3.25, 0.5, 3.5, -3, 0.5, 2.25, -3.25, 0.5, 1.5, -4.5, 0.5, 4.5, -1.5, 0.5, 4.5, -2.25, 0.75, 3.5, -3.25, 0.5, 3.5, -4.5, 0.5, 4.5, 1, 0.75, -2.75, 0.5, 0.75, -2.5, 2, 0.5, -2.5, -2.75, 0.5, -4.5, -2.75, 0.5, -4, -2, 0.5, -3.75, -0.25, 0.5, -3.5, 1, 0.5, -3.75, 4.5, 0.5, -4.5, 0.25, 0.5, 4.5, 0.25, 0.75, 3.5, -0.25, 0.5, 3.5, -1.5, 0.5, 4.5, 1, 0.75, -2.75, 2, 0.5, -2.5, 2, 0.5, -3.75, 1, 0.5, -3.75, 2, 0.5, -3.75, 3, 0.5, -3.75, 4.5, 0.5, -4.5, -2.5, 0.5, -2.25, -2.5, 0.5, -0.75, -2, 0.5, -0.75, 1, 0.5, -3.75, 2, 0.5, -3.75, 4.5, 0.5, -4.5, 1, 0.5, 2.25, 1.75, 0.5, 2.25, 1.75, 0.5, 0.75, 3, 0.5, -3.75, 3, 0.75, -3, 4.5, 0.5, -3, 4.5, 0.5, -4.5, -2, 0.75, 1, -2, 0.5, 2.5, -0.25, 0.5, 2.5, -0.25, 0.5, 0.5, -2, 0.5, -2.5, -2.5, 0.5, -2.25, -2, 0.5, -0.75, -0.25, 0.5, -0.5, 0.5, 0.5, -0.75, -0.25, 0.5, -2.5, -2, 0.75, 3, -1.5, 0.5, 4.5, -0.25, 0.5, 3.5, -0.25, 0.5, 2.5, -2, 0.5, 2.5, -0.25, 0.5, -3.5, -2, 0.5, -3.75, -2, 0.5, -2.5, -0.25, 0.5, -2.5, -2, 0.5, -0.75, -2, 0.75, 1, -0.25, 0.5, 0.5, -0.25, 0.5, -0.5, 0.5, 0.5, -0.75, 0.25, 0.75, -2.5, -0.25, 0.5, -2.5, 1, 0.5, 2.25, 1.75, 0.5, 0.75, 1, 0.75, 0.25, -0.25, 0.5, 0.5, -0.25, 0.5, 2.5, 1, 0.75, 0.25, 1.75, 0.5, 0.75, 2, 0.5, 0.25, 1, 0.5, -0.75, 1.75, 0.5, 2.25, 1, 0.5, 2.25, 1, 0.75, 3.25, 2.75, 0.75, -2.5, 2, 0.5, -2.5, 1, 0.5, -0.75, 1, 0.75, 3.25, 0.25, 0.75, 3.5, 0.25, 0.5, 4.5, 0.5, 0.75, -2.5, 0.25, 0.75, -2.5, 0.5, 0.5, -0.75, 0.5, 0.75, -2.5, 0.5, 0.5, -0.75, 1, 0.5, -0.75, 2, 0.5, -2.5, 4.5, 0.5, -3, 3, 0.75, -3, 2.75, 0.75, -2.5, 3, 0.5, 0.25, 3, 0.75, 2.25, 4.5, 0.5, 4.5, 4.5, 0.5, -3, 1, 0.5, -0.75, 2, 0.5, 0.25, 3, 0.5, 0.25, 4.5, 0.5, -3, 2.75, 0.75, -2.5, 3, 0.75, 2.25, 1.75, 0.5, 2.25, 1, 0.75, 3.25, 0.25, 0.5, 4.5, 4.5, 0.5, 4.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(6, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(10, 7, 11), PackedInt32Array(14, 13, 12), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(21, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 33), PackedInt32Array(35, 34, 36), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 40), PackedInt32Array(40, 37, 41), PackedInt32Array(41, 37, 42), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 46), PackedInt32Array(50, 49, 47), PackedInt32Array(47, 49, 48), PackedInt32Array(53, 52, 51), PackedInt32Array(56, 55, 54), PackedInt32Array(59, 58, 57), PackedInt32Array(62, 61, 60), PackedInt32Array(64, 63, 65), PackedInt32Array(65, 63, 66), PackedInt32Array(68, 67, 69), PackedInt32Array(69, 67, 70), PackedInt32Array(72, 71, 73), PackedInt32Array(73, 71, 76), PackedInt32Array(73, 76, 74), PackedInt32Array(74, 76, 75), PackedInt32Array(81, 80, 77), PackedInt32Array(77, 80, 79), PackedInt32Array(77, 79, 78), PackedInt32Array(85, 84, 82), PackedInt32Array(82, 84, 83), PackedInt32Array(89, 88, 86), PackedInt32Array(86, 88, 87), PackedInt32Array(92, 91, 90), PackedInt32Array(95, 94, 96), PackedInt32Array(96, 94, 93), PackedInt32Array(96, 93, 97), PackedInt32Array(99, 98, 100), PackedInt32Array(100, 98, 101), PackedInt32Array(104, 103, 102), PackedInt32Array(107, 106, 105), PackedInt32Array(110, 109, 108), PackedInt32Array(113, 112, 111), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(118, 120, 119), PackedInt32Array(122, 121, 123), PackedInt32Array(123, 121, 124), PackedInt32Array(126, 125, 127), PackedInt32Array(127, 125, 129), PackedInt32Array(127, 129, 128), PackedInt32Array(131, 130, 132), PackedInt32Array(132, 130, 133), PackedInt32Array(133, 130, 134)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_eqd40"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrgqh"]
+albedo_color = Color(0.0784314, 0.470588, 0.313726, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1lg0v"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_oov5a")
+
+[node name="Terrain" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Plane" type="MeshInstance3D" parent="NavigationRegion3D/Terrain"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_eqd40")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrgqh")
+
+[node name="Boxes" type="Node3D" parent="NavigationRegion3D/Terrain"]
+
+[node name="Box" type="MeshInstance3D" parent="NavigationRegion3D/Terrain/Boxes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5, 0.25, 0)
+mesh = SubResource("BoxMesh_1lg0v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrgqh")
+
+[node name="Box2" type="MeshInstance3D" parent="NavigationRegion3D/Terrain/Boxes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5, 0.25, 1)
+mesh = SubResource("BoxMesh_1lg0v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrgqh")
+
+[node name="Box3" type="MeshInstance3D" parent="NavigationRegion3D/Terrain/Boxes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.5, 0.25, 3)
+mesh = SubResource("BoxMesh_1lg0v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrgqh")
+
+[node name="Box4" type="MeshInstance3D" parent="NavigationRegion3D/Terrain/Boxes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0.25, 3)
+mesh = SubResource("BoxMesh_1lg0v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrgqh")
+
+[node name="Box5" type="MeshInstance3D" parent="NavigationRegion3D/Terrain/Boxes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0.25, 0)
+mesh = SubResource("BoxMesh_1lg0v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrgqh")
+
+[node name="Box6" type="MeshInstance3D" parent="NavigationRegion3D/Terrain/Boxes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.5, 0.25, -3)
+mesh = SubResource("BoxMesh_1lg0v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrgqh")
+
+[node name="Box7" type="MeshInstance3D" parent="NavigationRegion3D/Terrain/Boxes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.5, 0.25, -3)
+mesh = SubResource("BoxMesh_1lg0v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrgqh")
+
+[node name="Box8" type="MeshInstance3D" parent="NavigationRegion3D/Terrain/Boxes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.5, 0.25, 1)
+mesh = SubResource("BoxMesh_1lg0v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrgqh")
+
+[node name="Box9" type="MeshInstance3D" parent="NavigationRegion3D/Terrain/Boxes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.5, 0.25, 2)
+mesh = SubResource("BoxMesh_1lg0v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrgqh")
+
+[node name="Box10" type="MeshInstance3D" parent="NavigationRegion3D/Terrain/Boxes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.82895, 0.25, -3.05096)
+mesh = SubResource("BoxMesh_1lg0v")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrgqh")
+
+[node name="PlayerStartPos" type="Node3D" parent="."]
+
+[node name="Player1" type="Node3D" parent="PlayerStartPos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 4.5)
+
+[node name="Player2" type="Node3D" parent="PlayerStartPos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -4.5)
+
+[node name="Managers" type="Node3D" parent="."]
+
+[node name="RtsManager" type="Node3D" parent="Managers"]
+script = ExtResource("1_wgis4")
