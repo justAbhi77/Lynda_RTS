@@ -6,7 +6,7 @@ class_name Highlight
 var DisplayItem:Node
 
 func Select():
-	#add_child(DisplayItem)
+	add_child(DisplayItem)
 	pass
 	
 func Deselect():
@@ -14,7 +14,5 @@ func Deselect():
 	
 func _ready():
 	DisplayItem = get_node(DisplayItemPath)
-	print("start",DisplayItemPath,DisplayItem)
 	get_parent().remove_child.call_deferred(DisplayItem)
-	print("start",DisplayItemPath,DisplayItem)
 
