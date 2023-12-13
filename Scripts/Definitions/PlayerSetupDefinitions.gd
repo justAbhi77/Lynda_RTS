@@ -1,14 +1,14 @@
-extends  Node
+extends Resource
 
-class_name PlayerSetupDefinitions
+class_name PlayerSetupDefinitions 
 
 @export var Name:String = ""
 
-@export var Location:Node3D
+@export var Location_path:NodePath
 
 @export var AccentColor:Color
 
-@export var StartingUnits:Array = []
+@export var StartingUnits:Array[PackedScene] = []
 
 @export var IsAi:bool
 

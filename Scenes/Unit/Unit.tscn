@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://dcdppmtuw0cw6"]
+
+[ext_resource type="PackedScene" uid="uid://4jouq7fvns0n" path="res://Mesh/Unit/Drone_Unit.blend" id="1_u5afq"]
+[ext_resource type="Script" path="res://Scripts/Interactions/Highlight.gd" id="2_eygxv"]
+[ext_resource type="Texture2D" uid="uid://dk7mma2tmg2ix" path="res://Mesh/Unit/Textures/Material.007 Diffuse Color.png" id="2_twa8n"]
+[ext_resource type="Material" uid="uid://1qub1pt0ih87" path="res://Materials/Selection.tres" id="3_as4c3"]
+[ext_resource type="Script" path="res://Scripts/Rotate.gd" id="4_c37u4"]
+[ext_resource type="Script" path="res://Scripts/Interactive.gd" id="6_c3nvq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmdaj"]
+albedo_texture = ExtResource("2_twa8n")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p1t5x"]
+
+[node name="Drone_Unit" instance=ExtResource("1_u5afq")]
+
+[node name="Cube_001" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_jmdaj")
+
+[node name="SelectionImage" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(5.25, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1, 0)
+material_override = ExtResource("3_as4c3")
+mesh = SubResource("PlaneMesh_p1t5x")
+script = ExtResource("4_c37u4")
+Rotation = Vector3(0, 1, 0)
+speed = 0.5
+
+[node name="Highlight" type="Node3D" parent="." index="2"]
+script = ExtResource("2_eygxv")
+DisplayItemPath = NodePath("../SelectionImage")
+
+[node name="Interactive" type="Node3D" parent="." index="3" node_paths=PackedStringArray("InterationsArray")]
+script = ExtResource("6_c3nvq")
+InterationsArray = [NodePath("../Highlight")]
