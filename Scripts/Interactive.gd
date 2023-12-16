@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name Interactive
+
 var _Selected:bool = false
 var Selected:bool :
 	get:

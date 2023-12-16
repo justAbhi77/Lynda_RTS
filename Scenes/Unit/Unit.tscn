@@ -1,18 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcdppmtuw0cw6"]
+[gd_scene load_steps=12 format=3 uid="uid://dcdppmtuw0cw6"]
 
 [ext_resource type="PackedScene" uid="uid://4jouq7fvns0n" path="res://Mesh/Unit/Drone_Unit.blend" id="1_u5afq"]
+[ext_resource type="Script" path="res://Scripts/UnitManager.gd" id="2_bbu2g"]
 [ext_resource type="Script" path="res://Scripts/Interactions/Highlight.gd" id="2_eygxv"]
 [ext_resource type="Texture2D" uid="uid://dk7mma2tmg2ix" path="res://Mesh/Unit/Textures/Material.007 Diffuse Color.png" id="2_twa8n"]
 [ext_resource type="Material" uid="uid://1qub1pt0ih87" path="res://Materials/Selection.tres" id="3_as4c3"]
 [ext_resource type="Script" path="res://Scripts/Rotate.gd" id="4_c37u4"]
 [ext_resource type="Script" path="res://Scripts/Interactive.gd" id="6_c3nvq"]
+[ext_resource type="Script" path="res://Scripts/Interactions/RightClickInteraction.gd" id="8_83u2c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmdaj"]
 albedo_texture = ExtResource("2_twa8n")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p1t5x"]
 
-[node name="Drone_Unit" instance=ExtResource("1_u5afq")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_0trux"]
+
+[node name="Drone_Unit" node_paths=PackedStringArray("interactions") instance=ExtResource("1_u5afq")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("2_bbu2g")
+interactions = NodePath("Interactive")
 
 [node name="Cube_001" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -24,12 +31,24 @@ material_override = ExtResource("3_as4c3")
 mesh = SubResource("PlaneMesh_p1t5x")
 script = ExtResource("4_c37u4")
 Rotation = Vector3(0, 1, 0)
-speed = 0.5
+speed = 0.25
 
-[node name="Highlight" type="Node3D" parent="." index="2"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
+
+[node name="HighlightInteraction" type="Node3D" parent="." index="3"]
 script = ExtResource("2_eygxv")
 DisplayItemPath = NodePath("../SelectionImage")
 
-[node name="Interactive" type="Node3D" parent="." index="3" node_paths=PackedStringArray("InterationsArray")]
+[node name="Interactive" type="Node3D" parent="." index="4" node_paths=PackedStringArray("InterationsArray")]
 script = ExtResource("6_c3nvq")
-InterationsArray = [NodePath("../Highlight")]
+InterationsArray = [NodePath("../HighlightInteraction"), NodePath("../RightClickInteraction")]
+
+[node name="RightClickInteraction" type="Node3D" parent="." index="5" node_paths=PackedStringArray("Agent")]
+script = ExtResource("8_83u2c")
+Agent = NodePath("../NavigationAgent3D")
+
+[node name="Area3D" type="Area3D" parent="." index="6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)
+shape = SubResource("SphereShape3D_0trux")

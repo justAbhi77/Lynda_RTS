@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/RTS_Map.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://Images/icon.svg"
 
+[layer_names]
+
+3d_physics/layer_2="Terrain"
+
 [rendering]
 
 renderer/rendering_method="mobile"

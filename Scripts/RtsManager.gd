@@ -4,7 +4,28 @@ static var Current:RTSManager = null
 
 @export var Players:Array[PlayerSetupDefinitions] = []
 
+@export var RAY_LENGTH:float = 10000
+
 @onready var unitsParent:Node3D = $"../../Units"
+
+@onready var cam:Camera3D = get_viewport().get_camera_3d()
+
+func ScreenPointToMapPosition(point:Vector2):
+	var space_state = get_world_3d().direct_space_state
+	
+	var origin = cam.project_ray_origin(point)
+	var end = origin + cam.project_ray_normal(point) * RAY_LENGTH
+	var query = PhysicsRayQueryParameters3D.create(origin, 
+													end)
+	query.collide_with_areas = true
+
+	var result = space_state.intersect_ray(query)
+	
+	if result.is_empty():
+		return null
+	
+	return result.position
+	
 
 func _ready():
 	Current = self
@@ -19,3 +40,5 @@ func _ready():
 			units.position = GotNode.position
 			units.rotation = GotNode.rotation
 			unitsParent.add_child(units)
+			if !p.IsAi:
+				units.add_child(RightClickInteraction.new())

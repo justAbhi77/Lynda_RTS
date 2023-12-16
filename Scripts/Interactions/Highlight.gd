@@ -6,10 +6,13 @@ class_name Highlight
 var DisplayItem:Node
 
 func Select():
+	if DisplayItem.get_parent() == self:
+		return
 	add_child(DisplayItem)
-	pass
 	
 func Deselect():
+	if DisplayItem.get_parent() != self:
+		return
 	remove_child(DisplayItem)
 	
 func _ready():
