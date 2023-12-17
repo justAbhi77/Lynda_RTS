@@ -3,6 +3,7 @@ extends Node3D
 class_name UnitManager
 
 @export var interactions:Interactive
+@export var UnitPlayer:Player
 @export var movement_speed: float = 4.0
 @export var navigationEnabled:bool= false
 @onready var navigation_agent: NavigationAgent3D = get_node("NavigationAgent3D")
@@ -25,6 +26,7 @@ func navigate_process(delta):
 	movement_delta = movement_speed * delta
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector3 = global_position.direction_to(next_path_position) * movement_delta
+	look_at(next_path_position, Vector3.UP)
 	if navigation_agent.avoidance_enabled:
 		navigation_agent.set_velocity(new_velocity)
 	else:

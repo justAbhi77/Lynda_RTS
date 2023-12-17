@@ -8,7 +8,7 @@ var DisplayItem:Node
 func Select():
 	if DisplayItem.get_parent() == self:
 		return
-	add_child(DisplayItem)
+	add_child(DisplayItem,true)
 	
 func Deselect():
 	if DisplayItem.get_parent() != self:

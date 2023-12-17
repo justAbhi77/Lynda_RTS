@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://1oagukxun6do"]
+[gd_scene load_steps=18 format=3 uid="uid://1oagukxun6do"]
 
 [ext_resource type="Script" path="res://Scripts/RtsManager.gd" id="1_wgis4"]
 [ext_resource type="PackedScene" uid="uid://dcdppmtuw0cw6" path="res://Scenes/Unit/Unit.tscn" id="2_h3nqc"]
 [ext_resource type="Script" path="res://Scripts/Definitions/PlayerSetupDefinitions.gd" id="2_kcq2n"]
 [ext_resource type="Script" path="res://Scripts/CameraCradle.gd" id="2_mrq58"]
 [ext_resource type="Script" path="res://Scripts/MouseScript.gd" id="4_nw3eh"]
+[ext_resource type="PackedScene" uid="uid://dov0wmoxfp4ir" path="res://Scenes/UI/HUD.tscn" id="6_bsrqd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m1xdp"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -59,7 +60,7 @@ StartingUnits = Array[PackedScene]([ExtResource("2_h3nqc")])
 IsAi = true
 Credits = 500.0
 
-[node name="Node3D" type="Node3D"]
+[node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8ippe")
@@ -168,3 +169,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 
 script = ExtResource("2_mrq58")
 
 [node name="Units" type="Node3D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="UI" instance=ExtResource("6_bsrqd")]

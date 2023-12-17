@@ -1,0 +1,181 @@
+[gd_scene load_steps=2 format=3 uid="uid://dov0wmoxfp4ir"]
+
+[ext_resource type="Texture2D" uid="uid://cmxbsb6h848mi" path="res://Images/Map.png" id="1_7rvrw"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 200.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 200)
+texture = ExtResource("1_7rvrw")
+
+[node name="Viewport" type="ReferenceRect" parent="Map"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = 28.0
+offset_right = 70.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(29, 22)
+border_width = 5.0
+editor_only = false
+
+[node name="Blip" type="Control" parent="Map"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 142.0
+offset_top = -43.0
+offset_right = 145.0
+offset_bottom = -40.0
+grow_vertical = 0
+
+[node name="Info" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.5
+offset_top = -110.0
+offset_right = 107.5
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(107.5, 110)
+editor_only = false
+
+[node name="Image" type="ReferenceRect" parent="Info"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -105.0
+offset_right = 102.0
+offset_bottom = -5.0
+grow_vertical = 0
+pivot_offset = Vector2(50, 110)
+
+[node name="Line1" type="TextEdit" parent="Info"]
+layout_mode = 0
+offset_left = 103.5
+offset_top = 5.0
+offset_right = 212.5
+offset_bottom = 37.0
+
+[node name="Line2" type="TextEdit" parent="Info"]
+layout_mode = 0
+offset_left = 103.5
+offset_top = 39.0
+offset_right = 212.5
+offset_bottom = 71.0
+
+[node name="Line3" type="TextEdit" parent="Info"]
+layout_mode = 0
+offset_left = 103.5
+offset_top = 73.0
+offset_right = 212.5
+offset_bottom = 105.0
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -200.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(200, 200)
+editor_only = false
+
+[node name="GridContainer" type="GridContainer" parent="ReferenceRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="ReferenceRect1" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+editor_only = false
+
+[node name="ReferenceRect2" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+editor_only = false
+
+[node name="ReferenceRect3" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+editor_only = false
+
+[node name="ReferenceRect4" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+editor_only = false
+
+[node name="ReferenceRect5" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+editor_only = false
+
+[node name="ReferenceRect6" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+editor_only = false
+
+[node name="ReferenceRect7" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+editor_only = false
+
+[node name="ReferenceRect8" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+editor_only = false
+
+[node name="ReferenceRect9" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+editor_only = false

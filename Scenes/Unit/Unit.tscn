@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcdppmtuw0cw6"]
+[gd_scene load_steps=14 format=3 uid="uid://dcdppmtuw0cw6"]
 
 [ext_resource type="PackedScene" uid="uid://4jouq7fvns0n" path="res://Mesh/Unit/Drone_Unit.blend" id="1_u5afq"]
 [ext_resource type="Script" path="res://Scripts/UnitManager.gd" id="2_bbu2g"]
@@ -7,11 +7,18 @@
 [ext_resource type="Material" uid="uid://1qub1pt0ih87" path="res://Materials/Selection.tres" id="3_as4c3"]
 [ext_resource type="Script" path="res://Scripts/Rotate.gd" id="4_c37u4"]
 [ext_resource type="Script" path="res://Scripts/Interactive.gd" id="6_c3nvq"]
+[ext_resource type="Script" path="res://Scripts/MarkColor.gd" id="8_cxjsh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmdaj"]
 albedo_texture = ExtResource("2_twa8n")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p1t5x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nk3uk"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g3ifg"]
+material = SubResource("StandardMaterial3D_nk3uk")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0trux"]
 
@@ -32,21 +39,37 @@ script = ExtResource("4_c37u4")
 Rotation = Vector3(0, 1, 0)
 speed = 0.25
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
+[node name="AccentColors" type="Node3D" parent="." index="2"]
+
+[node name="AccentColor1" type="MeshInstance3D" parent="AccentColors" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 1.7, 1.8, 0)
+mesh = SubResource("BoxMesh_g3ifg")
+skeleton = NodePath("../..")
+
+[node name="AccentColor2" type="MeshInstance3D" parent="AccentColors" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -1.9, 1.8, 0)
+mesh = SubResource("BoxMesh_g3ifg")
+skeleton = NodePath("../..")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="3"]
 path_desired_distance = 0.1
 target_desired_distance = 0.1
 avoidance_enabled = true
 
-[node name="HighlightInteraction" type="Node3D" parent="." index="3"]
+[node name="HighlightInteraction" type="Node3D" parent="." index="4"]
 script = ExtResource("2_eygxv")
 DisplayItemPath = NodePath("../SelectionImage")
 
-[node name="Interactive" type="Node3D" parent="." index="4" node_paths=PackedStringArray("InterationsArray")]
+[node name="Interactive" type="Node3D" parent="." index="5" node_paths=PackedStringArray("InterationsArray")]
 script = ExtResource("6_c3nvq")
 InterationsArray = [NodePath("../HighlightInteraction")]
 
-[node name="Area3D" type="Area3D" parent="." index="5"]
+[node name="Area3D" type="Area3D" parent="." index="6"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)
 shape = SubResource("SphereShape3D_0trux")
+
+[node name="MarkColor" type="Node3D" parent="." index="7" node_paths=PackedStringArray("MeshInst")]
+script = ExtResource("8_cxjsh")
+MeshInst = [NodePath("../AccentColors/AccentColor1"), NodePath("../AccentColors/AccentColor2")]

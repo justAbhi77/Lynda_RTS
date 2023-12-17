@@ -37,10 +37,16 @@ func _ready():
 		GotNode = get_node(p.Location_path)
 		for u in p.StartingUnits:
 			units = u.instantiate()
+			unitsParent.add_child(units,true)
 			units.position = GotNode.position
 			units.rotation = GotNode.rotation
-			unitsParent.add_child(units)
+			var player = Player.new()
+			units.add_child(player,true)
+			player.name = "Player"
+			player.Info = p
 			if !p.IsAi:
+				if player.Default == null:
+					player.Default = p
 				var rightInteraction = RightClickInteraction.new()
-				units.add_child(rightInteraction)
+				units.add_child(rightInteraction,true)
 				units.interactions.InterationsArray.append(rightInteraction)
