@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dov0wmoxfp4ir"]
+[gd_scene load_steps=3 format=3 uid="uid://dov0wmoxfp4ir"]
 
 [ext_resource type="Texture2D" uid="uid://cmxbsb6h848mi" path="res://Images/Map.png" id="1_7rvrw"]
+[ext_resource type="Texture2D" uid="uid://b7n6r7sw8l3je" path="res://Images/CashBox.png" id="2_vwaia"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -97,7 +98,7 @@ offset_top = 73.0
 offset_right = 212.5
 offset_bottom = 105.0
 
-[node name="ReferenceRect" type="ReferenceRect" parent="."]
+[node name="Actions" type="ReferenceRect" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -111,7 +112,7 @@ grow_vertical = 0
 pivot_offset = Vector2(200, 200)
 editor_only = false
 
-[node name="GridContainer" type="GridContainer" parent="ReferenceRect"]
+[node name="GridContainer" type="GridContainer" parent="Actions"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -126,56 +127,83 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="ReferenceRect1" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+[node name="Button1" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-editor_only = false
 
-[node name="ReferenceRect2" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+[node name="Button2" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-editor_only = false
 
-[node name="ReferenceRect3" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+[node name="Button3" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-editor_only = false
 
-[node name="ReferenceRect4" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+[node name="Button4" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-editor_only = false
 
-[node name="ReferenceRect5" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+[node name="Button5" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-editor_only = false
 
-[node name="ReferenceRect6" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+[node name="Button6" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-editor_only = false
 
-[node name="ReferenceRect7" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+[node name="Button7" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-editor_only = false
 
-[node name="ReferenceRect8" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+[node name="Button8" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-editor_only = false
 
-[node name="ReferenceRect9" type="ReferenceRect" parent="ReferenceRect/GridContainer"]
+[node name="Button9" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-editor_only = false
+
+[node name="CashBox Image" type="ReferenceRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -81.0
+offset_bottom = 38.0
+grow_horizontal = 0
+pivot_offset = Vector2(81, 0)
+
+[node name="TextureRect" type="TextureRect" parent="CashBox Image"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vwaia")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="CashBox Image"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = -3.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Test"
