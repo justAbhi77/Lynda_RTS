@@ -2,7 +2,7 @@ extends Node3D
 
 class_name UnitManager
 
-@export var interactions:Node3D
+@export var interactions:Interactive
 @export var movement_speed: float = 4.0
 @export var navigationEnabled:bool= false
 @onready var navigation_agent: NavigationAgent3D = get_node("NavigationAgent3D")

@@ -30,7 +30,7 @@ func ScreenPointToMapPosition(point:Vector2):
 func _ready():
 	Current = self
 		
-	var units
+	var units:UnitManager
 	var GotNode
 	
 	for p in Players:
@@ -41,4 +41,6 @@ func _ready():
 			units.rotation = GotNode.rotation
 			unitsParent.add_child(units)
 			if !p.IsAi:
-				units.add_child(RightClickInteraction.new())
+				var rightInteraction = RightClickInteraction.new()
+				units.add_child(rightInteraction)
+				units.interactions.InterationsArray.append(rightInteraction)

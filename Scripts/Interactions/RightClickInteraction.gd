@@ -2,7 +2,7 @@ extends Interaction
 
 class_name RightClickInteraction
 
-@export var RelaxDistance:float = 5
+@export var RelaxDistance:float = 0.01
 @export var movement_speed: float = 4.0
 @export var Agent:NavigationAgent3D 
 
@@ -25,6 +25,7 @@ func Sendtotarger():
 
 func _ready():
 	parent = get_parent()
+	Agent = parent.get_node("NavigationAgent3D")
 	
 func _process(_delta):
 	if Selected and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
@@ -32,7 +33,7 @@ func _process(_delta):
 		if temptarget != null:
 			target = temptarget
 			Sendtotarger()
-	if isActive and target.distance_to(parent.position)<RelaxDistance:
+	if isActive and target.distance_to(parent.position)<=RelaxDistance:
 		isActive = false
 		parent.navigationEnabled = isActive
 		
