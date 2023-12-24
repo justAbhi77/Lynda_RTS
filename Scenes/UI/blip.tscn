@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgdbwcdn7ucyr"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_q64iy"]
+
+[node name="Blip" type="TextureRect"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_right = 10.0
+offset_bottom = -638.0
+grow_vertical = 0
+texture = SubResource("CanvasTexture_q64iy")

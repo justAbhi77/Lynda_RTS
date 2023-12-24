@@ -13,7 +13,12 @@ config_version=5
 config/name="Lynda_RTS"
 run/main_scene="res://Scenes/RTS_Map.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+run/max_fps=30
 config/icon="res://Images/icon.svg"
+
+[display]
+
+window/vsync/vsync_mode=2
 
 [layer_names]
 
