@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dov0wmoxfp4ir"]
+[gd_scene load_steps=6 format=3 uid="uid://dov0wmoxfp4ir"]
 
 [ext_resource type="Script" path="res://Scripts/Hud/Map.gd" id="2_7m82o"]
 [ext_resource type="Texture2D" uid="uid://cftl5ii13e7nr" path="res://Images/CashBox.png" id="2_vwaia"]
+[ext_resource type="Script" path="res://Scripts/Hud/InfoManager.gd" id="3_it672"]
 [ext_resource type="PackedScene" uid="uid://bgdbwcdn7ucyr" path="res://Scenes/UI/blip.tscn" id="3_wi2sr"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_y3gn2"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="Map" type="TextureRect" parent="." node_paths=PackedStringArray("ViewPort")]
 self_modulate = Color(0, 0, 0, 1)
@@ -24,6 +26,7 @@ offset_top = -200.0
 offset_right = 200.0
 grow_vertical = 0
 pivot_offset = Vector2(0, 200)
+mouse_filter = 0
 texture = SubResource("CanvasTexture_y3gn2")
 script = ExtResource("2_7m82o")
 ViewPort = NodePath("Viewport")
@@ -46,7 +49,7 @@ pivot_offset = Vector2(35, 20)
 border_width = 5.0
 editor_only = false
 
-[node name="Info" type="ReferenceRect" parent="."]
+[node name="Info" type="ReferenceRect" parent="." node_paths=PackedStringArray("profilePic", "Line1", "Line2", "Line3")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -60,8 +63,13 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(107.5, 110)
 editor_only = false
+script = ExtResource("3_it672")
+profilePic = NodePath("Image")
+Line1 = NodePath("Line1")
+Line2 = NodePath("Line2")
+Line3 = NodePath("Line3")
 
-[node name="Image" type="ReferenceRect" parent="Info"]
+[node name="Image" type="TextureRect" parent="Info"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -72,6 +80,8 @@ offset_right = 102.0
 offset_bottom = -5.0
 grow_vertical = 0
 pivot_offset = Vector2(50, 110)
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Line1" type="TextEdit" parent="Info"]
 layout_mode = 0
@@ -93,6 +103,7 @@ offset_left = 103.5
 offset_top = 73.0
 offset_right = 212.5
 offset_bottom = 105.0
+wrap_mode = 1
 
 [node name="Actions" type="ReferenceRect" parent="."]
 layout_mode = 1
@@ -121,52 +132,70 @@ offset_right = 96.0
 offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 columns = 3
 
 [node name="Button1" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+expand_icon = true
 
 [node name="Button2" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button3" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button4" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button5" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button6" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button7" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button8" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
 
 [node name="Button9" type="Button" parent="Actions/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+icon_alignment = 1
+expand_icon = true
 
 [node name="CashBox Image" type="ReferenceRect" parent="."]
 layout_mode = 1

@@ -50,3 +50,6 @@ func _ready():
 				var rightInteraction = RightClickInteraction.new()
 				units.add_child(rightInteraction,true)
 				units.interactions.InterationsArray.append(rightInteraction)
+				var actionSelect = ActionSelect.new()
+				units.add_child(actionSelect,true)
+				units.interactions.InterationsArray.append(actionSelect)

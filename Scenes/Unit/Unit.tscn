@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dcdppmtuw0cw6"]
+[gd_scene load_steps=19 format=3 uid="uid://dcdppmtuw0cw6"]
 
 [ext_resource type="PackedScene" uid="uid://4jouq7fvns0n" path="res://Mesh/Unit/Drone_Unit.blend" id="1_u5afq"]
 [ext_resource type="Script" path="res://Scripts/UnitManager.gd" id="2_bbu2g"]
@@ -9,6 +9,10 @@
 [ext_resource type="Script" path="res://Scripts/Interactive.gd" id="6_c3nvq"]
 [ext_resource type="Script" path="res://Scripts/MarkColor.gd" id="8_cxjsh"]
 [ext_resource type="Script" path="res://Scripts/Hud/MapBlip.gd" id="9_51ktg"]
+[ext_resource type="Script" path="res://Scripts/Interactions/ShowUnitInfo.gd" id="10_hmoy8"]
+[ext_resource type="Texture2D" uid="uid://dfuj50vr62a64" path="res://Images/Drone Unit Face.png" id="11_1kdhx"]
+[ext_resource type="Script" path="res://Scripts/Actions/CreateBuildingAction.gd" id="12_mx4uh"]
+[ext_resource type="Texture2D" uid="uid://det671glmfgi8" path="res://Images/Command Base Face.png" id="13_a58vg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmdaj"]
 albedo_texture = ExtResource("2_twa8n")
@@ -63,7 +67,7 @@ DisplayItemPath = NodePath("../SelectionImage")
 
 [node name="Interactive" type="Node3D" parent="." index="5" node_paths=PackedStringArray("InterationsArray")]
 script = ExtResource("6_c3nvq")
-InterationsArray = [NodePath("../HighlightInteraction")]
+InterationsArray = [NodePath("../HighlightInteraction"), NodePath("../ShowUnitInfo")]
 
 [node name="Area3D" type="Area3D" parent="." index="6"]
 
@@ -77,3 +81,14 @@ MeshInst = [NodePath("../AccentColors/AccentColor1"), NodePath("../AccentColors/
 
 [node name="MapBlip" type="Node3D" parent="." index="8"]
 script = ExtResource("9_51ktg")
+
+[node name="ShowUnitInfo" type="Node3D" parent="." index="9"]
+script = ExtResource("10_hmoy8")
+Name = "Drone"
+maxHealth = 100.0
+CurrentHealth = 100.0
+ProfilePic = ExtResource("11_1kdhx")
+
+[node name="CreateBuildingAction" type="Node3D" parent="." index="10"]
+script = ExtResource("12_mx4uh")
+ButtonPic = ExtResource("13_a58vg")

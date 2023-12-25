@@ -20,6 +20,10 @@ config/icon="res://Images/icon.svg"
 
 window/vsync/vsync_mode=2
 
+[editor]
+
+script/templates_search_path="%APPDATA%\\Godot\\script_templates\\"
+
 [layer_names]
 
 3d_physics/layer_2="Terrain"
