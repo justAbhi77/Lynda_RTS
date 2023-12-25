@@ -15,7 +15,7 @@ func _ready():
 	blip.modulate = color
 
 func _physics_process(_delta):
-	blip.position = Map.Current.WorldPositionToMap(global_position)
+	blip.position = Map.Current.WorldPositionToMapUI(global_position)
 
 func _exit_tree():
 	Map.Current.remove_child(blip)

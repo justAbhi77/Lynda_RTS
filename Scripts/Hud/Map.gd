@@ -8,6 +8,7 @@ class_name Map
 @export var BlipPrefab:PackedScene
 
 static var Current:Map
+static var ViewPortMid:Vector2 
 
 var terrainSize:Vector2
 var mapRect:Control
@@ -21,6 +22,7 @@ func _ready():
 	Corner1 = get_node("/root/World/NavigationRegion3D/Corner1")
 	Corner2 = get_node("/root/World/NavigationRegion3D/Corner2")
 	terrainSize = Vector2(abs(Corner2.position.x-Corner1.position.x),abs(Corner2.position.z-Corner1.position.z))
+	ViewPortMid = size/2
 
 func WorldPositionToMap(point:Vector3)->Vector2:
 	#var pos = point-Corner1.position
@@ -29,5 +31,9 @@ func WorldPositionToMap(point:Vector3)->Vector2:
 		point.z / terrainSize.y * size.y)
 	return mapPos
 
+func WorldPositionToMapUI(point:Vector3)->Vector2:
+	var mapPos = WorldPositionToMap(point)
+	return (ViewPortMid + mapPos)
+
 func _physics_process(_delta):
-	ViewPort.position = WorldPositionToMap(Camera.position)
+	ViewPort.position = WorldPositionToMapUI(Camera.position)
