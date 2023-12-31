@@ -1,0 +1,79 @@
+[gd_scene load_steps=15 format=3 uid="uid://cxwwe8g5ndrb"]
+
+[ext_resource type="PackedScene" uid="uid://cy8ynhwjxpqbi" path="res://Mesh/CommandBase/Command Base.blend" id="1_a47lk"]
+[ext_resource type="Material" uid="uid://mqxwb8bt8mpp" path="res://Materials/CommandBase.tres" id="2_o8aih"]
+[ext_resource type="Material" uid="uid://1qub1pt0ih87" path="res://Materials/Selection.tres" id="3_30tok"]
+[ext_resource type="Script" path="res://Scripts/Rotate.gd" id="4_jklkr"]
+[ext_resource type="Script" path="res://Scripts/Interactions/Highlight.gd" id="5_uuuat"]
+[ext_resource type="Script" path="res://Scripts/Interactive.gd" id="6_04t7a"]
+[ext_resource type="Script" path="res://Scripts/Hud/MapBlip.gd" id="7_5qgg7"]
+[ext_resource type="Script" path="res://Scripts/Interactions/ShowUnitInfo.gd" id="8_lkw0d"]
+[ext_resource type="Texture2D" uid="uid://dfuj50vr62a64" path="res://Images/Drone Unit Face.png" id="9_5fo4k"]
+[ext_resource type="Script" path="res://Scripts/MarkColor.gd" id="10_0l3us"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mj6ht"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nk3uk"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dyogr"]
+material = SubResource("StandardMaterial3D_nk3uk")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qhcbf"]
+
+[node name="Command Base" instance=ExtResource("1_a47lk")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_o8aih")
+
+[node name="SelectionImage" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(5.25, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1, 0)
+material_override = ExtResource("3_30tok")
+mesh = SubResource("PlaneMesh_mj6ht")
+script = ExtResource("4_jklkr")
+Rotation = Vector3(0, 1, 0)
+speed = 0.25
+
+[node name="AccentColors" type="Node3D" parent="." index="2"]
+
+[node name="AccentColor1" type="MeshInstance3D" parent="AccentColors" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, 1.7, 1.8, 0)
+mesh = SubResource("BoxMesh_dyogr")
+skeleton = NodePath("../..")
+
+[node name="AccentColor2" type="MeshInstance3D" parent="AccentColors" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -1.9, 1.8, 0)
+mesh = SubResource("BoxMesh_dyogr")
+skeleton = NodePath("../..")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="3"]
+radius = 0.3
+
+[node name="HighlightInteraction" type="Node3D" parent="." index="4"]
+script = ExtResource("5_uuuat")
+DisplayItemPath = NodePath("../SelectionImage")
+
+[node name="Interactive" type="Node3D" parent="." index="5" node_paths=PackedStringArray("InterationsArray")]
+script = ExtResource("6_04t7a")
+InterationsArray = [NodePath("../HighlightInteraction"), NodePath("../ShowUnitInfo")]
+
+[node name="Area3D" type="Area3D" parent="." index="6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)
+shape = SubResource("SphereShape3D_qhcbf")
+
+[node name="MapBlip" type="Node3D" parent="." index="7"]
+script = ExtResource("7_5qgg7")
+
+[node name="ShowUnitInfo" type="Node3D" parent="." index="8"]
+script = ExtResource("8_lkw0d")
+Name = "Drone"
+maxHealth = 100.0
+CurrentHealth = 100.0
+ProfilePic = ExtResource("9_5fo4k")
+
+[node name="MarkColor" type="Node3D" parent="." index="9" node_paths=PackedStringArray("MeshInst")]
+script = ExtResource("10_0l3us")
+MeshInst = [null, null]

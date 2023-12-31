@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://mqxwb8bt8mpp"]
+
+[ext_resource type="Texture2D" uid="uid://43os5u8el3xo" path="res://Mesh/CommandBase/textures/base 3 Material.001 Diffuse Color.png" id="1_tbnvw"]
+
+[resource]
+albedo_color = Color(1, 1, 1, 0.278431)
+albedo_texture = ExtResource("1_tbnvw")

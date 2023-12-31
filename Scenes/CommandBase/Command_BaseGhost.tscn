@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmcuuhgspxfui"]
+
+[ext_resource type="PackedScene" uid="uid://cy8ynhwjxpqbi" path="res://Mesh/CommandBase/Command Base.blend" id="1_icuy2"]
+[ext_resource type="Material" uid="uid://xqucq6e6lsun" path="res://Materials/CommandBaseGhost.tres" id="2_0hqpo"]
+
+[node name="Command Base" instance=ExtResource("1_icuy2")]
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_0hqpo")
