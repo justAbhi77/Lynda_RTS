@@ -1,15 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxwwe8g5ndrb"]
+[gd_scene load_steps=18 format=3 uid="uid://cxwwe8g5ndrb"]
 
 [ext_resource type="PackedScene" uid="uid://cy8ynhwjxpqbi" path="res://Mesh/CommandBase/Command Base.blend" id="1_a47lk"]
 [ext_resource type="Material" uid="uid://mqxwb8bt8mpp" path="res://Materials/CommandBase.tres" id="2_o8aih"]
+[ext_resource type="Script" path="res://Scripts/UnitManager.gd" id="2_wabw7"]
 [ext_resource type="Material" uid="uid://1qub1pt0ih87" path="res://Materials/Selection.tres" id="3_30tok"]
 [ext_resource type="Script" path="res://Scripts/Rotate.gd" id="4_jklkr"]
 [ext_resource type="Script" path="res://Scripts/Interactions/Highlight.gd" id="5_uuuat"]
 [ext_resource type="Script" path="res://Scripts/Interactive.gd" id="6_04t7a"]
 [ext_resource type="Script" path="res://Scripts/Hud/MapBlip.gd" id="7_5qgg7"]
 [ext_resource type="Script" path="res://Scripts/Interactions/ShowUnitInfo.gd" id="8_lkw0d"]
-[ext_resource type="Texture2D" uid="uid://dfuj50vr62a64" path="res://Images/Drone Unit Face.png" id="9_5fo4k"]
+[ext_resource type="Texture2D" uid="uid://det671glmfgi8" path="res://Images/Command Base Face.png" id="9_exx1k"]
 [ext_resource type="Script" path="res://Scripts/MarkColor.gd" id="10_0l3us"]
+[ext_resource type="Script" path="res://Scripts/Earnings.gd" id="12_k5swf"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mj6ht"]
 
@@ -21,8 +23,13 @@ material = SubResource("StandardMaterial3D_nk3uk")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qhcbf"]
 
-[node name="Command Base" instance=ExtResource("1_a47lk")]
+[sub_resource type="SphereMesh" id="SphereMesh_pb0h5"]
+
+[node name="Command Base" node_paths=PackedStringArray("interactions") instance=ExtResource("1_a47lk")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("2_wabw7")
+isDroneUnit = false
+interactions = NodePath("Interactive")
 
 [node name="Cube" parent="." index="0"]
 material_override = ExtResource("2_o8aih")
@@ -47,33 +54,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3, -1.9, 1.8, 0)
 mesh = SubResource("BoxMesh_dyogr")
 skeleton = NodePath("../..")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="3"]
-radius = 0.3
-
-[node name="HighlightInteraction" type="Node3D" parent="." index="4"]
+[node name="HighlightInteraction" type="Node3D" parent="." index="3"]
 script = ExtResource("5_uuuat")
 DisplayItemPath = NodePath("../SelectionImage")
 
-[node name="Interactive" type="Node3D" parent="." index="5" node_paths=PackedStringArray("InterationsArray")]
+[node name="Interactive" type="Node3D" parent="." index="4" node_paths=PackedStringArray("InterationsArray")]
 script = ExtResource("6_04t7a")
 InterationsArray = [NodePath("../HighlightInteraction"), NodePath("../ShowUnitInfo")]
 
-[node name="Area3D" type="Area3D" parent="." index="6"]
+[node name="Area3D" type="Area3D" parent="." index="5"]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)
 shape = SubResource("SphereShape3D_qhcbf")
 
-[node name="MapBlip" type="Node3D" parent="." index="7"]
+[node name="MapBlip" type="Node3D" parent="." index="6"]
 script = ExtResource("7_5qgg7")
 
-[node name="ShowUnitInfo" type="Node3D" parent="." index="8"]
+[node name="ShowUnitInfo" type="Node3D" parent="." index="7"]
 script = ExtResource("8_lkw0d")
-Name = "Drone"
-maxHealth = 100.0
-CurrentHealth = 100.0
-ProfilePic = ExtResource("9_5fo4k")
+Name = "Base"
+maxHealth = 500.0
+CurrentHealth = 500.0
+ProfilePic = ExtResource("9_exx1k")
 
-[node name="MarkColor" type="Node3D" parent="." index="9" node_paths=PackedStringArray("MeshInst")]
+[node name="MarkColor" type="Node3D" parent="." index="8" node_paths=PackedStringArray("MeshInst")]
 script = ExtResource("10_0l3us")
-MeshInst = [null, null]
+MeshInst = [NodePath("../AccentColors/AccentColor1"), NodePath("../AccentColors/AccentColor2")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="9"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_pb0h5")
+
+[node name="Earnings" type="Node3D" parent="." index="10"]
+script = ExtResource("12_k5swf")

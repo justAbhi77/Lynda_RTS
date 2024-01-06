@@ -1,5 +1,9 @@
 extends Node3D
 
+class_name MouseManager
+
+static var Current:MouseManager
+
 @export var RAY_LENGTH:float = 100
 
 @onready var cam:Camera3D = get_viewport().get_camera_3d()
@@ -7,6 +11,11 @@ extends Node3D
 var Selections:Array[Interactive] = []
 
 @export var overUI:bool = false
+
+var enabled:bool = true
+
+func _init():
+	Current = self
 
 #func _process(_delta):
 	#if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -46,6 +55,9 @@ var Selections:Array[Interactive] = []
 	#result.collider.get_owner().interactions.Select()
 
 func _unhandled_input(event):
+	
+	if !enabled: return
+	
 	# Check if the left mouse button is pressed
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		# Check if the mouse is over UI
