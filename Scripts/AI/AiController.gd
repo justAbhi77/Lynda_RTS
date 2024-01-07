@@ -32,7 +32,7 @@ func _process(_delta):
 
 	if waited < Frequency:
 		return
-
+	
 	var bestAiValue = -999
 	var bestAi:AiBehaviour = null
 	
@@ -46,7 +46,6 @@ func _process(_delta):
 		if AiValue > bestAiValue:
 			bestAiValue = AiValue
 			bestAi = ai
-	
-	bestAi.Execute()
+	bestAi.Execute()	
 
 	waited = 0

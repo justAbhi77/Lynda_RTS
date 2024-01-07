@@ -67,7 +67,7 @@ func _unhandled_input(event):
 		# Clear selections if not holding SHIFT
 		if len(Selections) > 0 and !Input.is_key_pressed(KEY_SHIFT):
 			for sel in Selections:
-				if sel:
+				if sel != null:
 					sel.Deselect()
 			Selections.clear()
 
