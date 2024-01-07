@@ -37,25 +37,31 @@ func _process(_delta):
 		mat.albedo_color = green
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			var go = BuildingPrefab.instantiate()
+			go.name = "Command Base"
 			var PlayerInfo = Player.new()
-			go.add_child(PlayerInfo)
+			PlayerInfo.name = "Player"
+			go.add_child(PlayerInfo,true)
+			var actionSelect = ActionSelect.new()
+			actionSelect.name = "ActionSelect"
+			go.add_child(actionSelect,true)
+			go.interactions.InterationsArray.append(actionSelect)
+
 			Info.Credits -= Cost
 			PlayerInfo.Info = Info
-			PlayerInfo.name = "Player"
-			get_node("/root/World").add_child(go)
+			get_node("/root/World").add_child(go,true)
 			go.global_position = temptarget
-
+			
 			var obs = go.get_node("MeshInstance3D")
-
+			
 			var navmesh:NavigationRegion3D = get_node("/root/World/NavigationRegion3D")
 			var wallsparent = get_node("/root/World/NavigationRegion3D/Terrain/Walls")
 			
 			go.remove_child(obs)
-			wallsparent.add_child(obs)
+			wallsparent.add_child(obs,true)
 			
 			obs.global_position = temptarget
 			obs.scale = Vector3.ONE
-
+			
 			navmesh.bake_navigation_mesh()
 			
 			get_parent().queue_free()

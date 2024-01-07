@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/Actions/CreateBuildingAction.gd" id="12_mx4uh"]
 [ext_resource type="Texture2D" uid="uid://det671glmfgi8" path="res://Images/Command Base Face.png" id="13_a58vg"]
 [ext_resource type="PackedScene" uid="uid://dmcuuhgspxfui" path="res://Scenes/CommandBase/Command_BaseGhost.tscn" id="13_ba4je"]
-[ext_resource type="PackedScene" uid="uid://cxwwe8g5ndrb" path="res://Scenes/CommandBase/Command_Base.tscn" id="13_ll1k5"]
+[ext_resource type="Script" path="res://Scripts/Interactions/RightClickInteraction.gd" id="15_w1wes"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmdaj"]
 albedo_texture = ExtResource("2_twa8n")
@@ -71,7 +71,7 @@ DisplayItemPath = NodePath("../SelectionImage")
 
 [node name="Interactive" type="Node3D" parent="." index="5" node_paths=PackedStringArray("InterationsArray")]
 script = ExtResource("6_c3nvq")
-InterationsArray = [NodePath("../HighlightInteraction"), NodePath("../ShowUnitInfo")]
+InterationsArray = [NodePath("../HighlightInteraction"), NodePath("../ShowUnitInfo"), NodePath("../RightClickInteraction")]
 
 [node name="Area3D" type="Area3D" parent="." index="6"]
 
@@ -96,7 +96,10 @@ ProfilePic = ExtResource("11_1kdhx")
 [node name="CreateBuildingAction" type="Node3D" parent="." index="10"]
 script = ExtResource("12_mx4uh")
 Cost = 200.0
-BuildingPrefab = ExtResource("13_ll1k5")
 MaxBuildDistance = 5.0
 GhostBuildingPrefab = ExtResource("13_ba4je")
 ButtonPic = ExtResource("13_a58vg")
+
+[node name="RightClickInteraction" type="Node3D" parent="." index="11" node_paths=PackedStringArray("Agent")]
+script = ExtResource("15_w1wes")
+Agent = NodePath("../NavigationAgent3D")

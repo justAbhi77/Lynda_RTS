@@ -3,11 +3,14 @@ extends ActionBehaviour
 class_name CreateBuildingAction
 
 @export var Cost:float = 0
-@export var BuildingPrefab:PackedScene
+var BuildingPrefab:PackedScene
 @export var MaxBuildDistance:float = 30
 
 @export var GhostBuildingPrefab:PackedScene
 var active:Node3D = null
+
+func _ready():
+	BuildingPrefab = get_node("/root/World").BuildingPrefab
 
 func GetClickAction():
 	return func():
@@ -18,14 +21,16 @@ func GetClickAction():
 			return
 
 		var go = GhostBuildingPrefab.instantiate()
+		go.name = "GhostBuilding"
 		var finder = FindBuildingSite.new()
+		finder.name = "BuildingFinder"
 		finder.BuildingPrefab = BuildingPrefab
 		finder.MaxBuildDistance = MaxBuildDistance
 		finder.Info = player
 		finder.Source = self
-		go.add_child(finder)
+		go.add_child(finder,true)
 		active = go
-		add_child(go)
+		add_child(go,true)
 
 func _process(_delta):
 	if active == null: return

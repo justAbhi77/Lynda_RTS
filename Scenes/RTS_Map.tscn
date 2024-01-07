@@ -1,6 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://1oagukxun6do"]
+[gd_scene load_steps=28 format=3 uid="uid://1oagukxun6do"]
 
+[ext_resource type="Script" path="res://Scripts/World.gd" id="1_jyct6"]
 [ext_resource type="Script" path="res://Scripts/RtsManager.gd" id="1_wgis4"]
+[ext_resource type="PackedScene" uid="uid://cxwwe8g5ndrb" path="res://Scenes/CommandBase/Command_Base.tscn" id="2_8j3ic"]
 [ext_resource type="PackedScene" uid="uid://dcdppmtuw0cw6" path="res://Scenes/Unit/Unit.tscn" id="2_h3nqc"]
 [ext_resource type="Script" path="res://Scripts/Definitions/PlayerSetupDefinitions.gd" id="2_kcq2n"]
 [ext_resource type="Script" path="res://Scripts/CameraCradle.gd" id="2_mrq58"]
@@ -9,6 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://dov0wmoxfp4ir" path="res://Scenes/UI/HUD.tscn" id="6_bsrqd"]
 [ext_resource type="Script" path="res://Scripts/Hud/CashBoxManager.gd" id="6_wev1q"]
 [ext_resource type="Script" path="res://Scripts/ActionsManager.gd" id="7_j618q"]
+[ext_resource type="Script" path="res://Scripts/AI/AiController.gd" id="10_0826a"]
+[ext_resource type="Script" path="res://Scripts/AI/DoNothingAi.gd" id="11_ovapl"]
+[ext_resource type="Script" path="res://Scripts/AI/CreateBaseAi.gd" id="12_dn253"]
+[ext_resource type="Script" path="res://Scripts/AI/CreateDronesAi.gd" id="13_81boh"]
+[ext_resource type="Script" path="res://Scripts/AI/StrikeAi.gd" id="14_wrqxb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m1xdp"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -59,9 +66,12 @@ Location_path = NodePath("../../PlayerStartPos/Player2")
 AccentColor = Color(0.486275, 0.607843, 0, 1)
 StartingUnits = Array[PackedScene]([ExtResource("2_h3nqc")])
 IsAi = true
-Credits = 500.0
+Credits = 1000.0
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_jyct6")
+BuildingPrefab = ExtResource("2_8j3ic")
+UnitPrefab = ExtResource("2_h3nqc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8ippe")
@@ -181,6 +191,27 @@ script = ExtResource("6_wev1q")
 
 [node name="Actionsmanager" type="Node3D" parent="Managers"]
 script = ExtResource("7_j618q")
+
+[node name="Player 2 Ai" type="Node3D" parent="Managers"]
+
+[node name="Controller" type="Node3D" parent="Managers/Player 2 Ai"]
+script = ExtResource("10_0826a")
+PlayerName = "Player 2"
+Confusion = 0.0
+Frequency = 0.0
+
+[node name="DoNothingAi" type="Node3D" parent="Managers/Player 2 Ai/Controller"]
+script = ExtResource("11_ovapl")
+
+[node name="CreateBaseAi" type="Node3D" parent="Managers/Player 2 Ai/Controller"]
+script = ExtResource("12_dn253")
+
+[node name="CreateDronesAi" type="Node3D" parent="Managers/Player 2 Ai/Controller"]
+script = ExtResource("13_81boh")
+
+[node name="StrikeAi" type="Node3D" parent="Managers/Player 2 Ai/Controller"]
+script = ExtResource("14_wrqxb")
+WeightMultiplier = 1.5
 
 [node name="MainCamera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)

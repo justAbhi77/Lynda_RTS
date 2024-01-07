@@ -10,7 +10,7 @@ var Blip:
 
 func _ready():
 	blip = Map.Current.BlipPrefab.instantiate()
-	Map.Current.add_child(blip)
+	Map.Current.add_child(blip,true)
 	var color = get_parent().get_node("Player").Info.AccentColor
 	blip.modulate = color
 

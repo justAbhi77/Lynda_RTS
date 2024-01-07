@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cxwwe8g5ndrb"]
+[gd_scene load_steps=20 format=3 uid="uid://cxwwe8g5ndrb"]
 
 [ext_resource type="PackedScene" uid="uid://cy8ynhwjxpqbi" path="res://Mesh/CommandBase/Command Base.blend" id="1_a47lk"]
 [ext_resource type="Material" uid="uid://mqxwb8bt8mpp" path="res://Materials/CommandBase.tres" id="2_o8aih"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://det671glmfgi8" path="res://Images/Command Base Face.png" id="9_exx1k"]
 [ext_resource type="Script" path="res://Scripts/MarkColor.gd" id="10_0l3us"]
 [ext_resource type="Script" path="res://Scripts/Earnings.gd" id="12_k5swf"]
+[ext_resource type="Script" path="res://Scripts/Actions/CreateUnitAction.gd" id="13_o15w5"]
+[ext_resource type="Texture2D" uid="uid://dfuj50vr62a64" path="res://Images/Drone Unit Face.png" id="14_3p45k"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mj6ht"]
 
@@ -91,3 +93,8 @@ mesh = SubResource("SphereMesh_pb0h5")
 
 [node name="Earnings" type="Node3D" parent="." index="10"]
 script = ExtResource("12_k5swf")
+
+[node name="CreateUnitAction" type="Node3D" parent="." index="11"]
+script = ExtResource("13_o15w5")
+Cost = 25.0
+ButtonPic = ExtResource("14_3p45k")

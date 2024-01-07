@@ -18,7 +18,9 @@ func Select():
 func Deselect():
 	Selected = false
 
-func Sendtotarger():
+func Sendtotarget(pos = null):
+	if pos != null and pos is Vector3:
+		target = pos
 	Agent.set_target_position(target)
 	isActive = true
 	parent.navigationEnabled = isActive
@@ -32,7 +34,7 @@ func _process(_delta):
 		var temptarget = RTSManager.Current.ScreenPointToMapPosition(get_viewport().get_mouse_position())
 		if temptarget != null:
 			target = temptarget
-			Sendtotarger()
+			Sendtotarget()
 	if isActive and target.distance_to(parent.position)<=RelaxDistance:
 		isActive = false
 		parent.navigationEnabled = isActive

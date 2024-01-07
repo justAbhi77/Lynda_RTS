@@ -33,6 +33,11 @@ func _process(delta):
 				break
 		o.blip.visible = active
 		var parent =o.get_parent()
-		parent.get_node("Cube_001").visible = active
+
+		if parent.has_node("Cube_001"):
+			parent.get_node("Cube_001").visible = active
+		else:
+			parent.get_node("Cube").visible = active
+
 		parent.get_node("AccentColors/AccentColor1").visible = active
 		parent.get_node("AccentColors/AccentColor2").visible = active
