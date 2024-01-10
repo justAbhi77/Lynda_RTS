@@ -10,10 +10,6 @@ var player:PlayerSetupDefinitions
 var waited:float = 0
 var Ais:Array[AiBehaviour] = []
 
-var _Player:PlayerSetupDefinitions:
-	get:
-		return player
-
 func _ready():
 	for i in get_children():
 		if i is AiBehaviour:

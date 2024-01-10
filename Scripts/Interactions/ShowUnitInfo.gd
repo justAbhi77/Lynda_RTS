@@ -7,14 +7,14 @@ class_name ShowUnitInfo
 @export var CurrentHealth:float
 @export var ProfilePic:Texture
 
-var show:bool = false
+var showUI:bool = false
 
 func Select():
 
-	show = true
+	showUI = true
 
 func _process(_delta):
-	if !show:
+	if !showUI:
 		return
 	InfoManager.Current.SetPic(ProfilePic)
 	InfoManager.Current.SetLines(
@@ -24,6 +24,6 @@ func _process(_delta):
 	)
 
 func Deselect():
-	show = false
+	showUI = false
 	InfoManager.Current.ClearPic()
 	InfoManager.Current.ClearLines()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxwwe8g5ndrb"]
+[gd_scene load_steps=21 format=3 uid="uid://cxwwe8g5ndrb"]
 
 [ext_resource type="PackedScene" uid="uid://cy8ynhwjxpqbi" path="res://Mesh/CommandBase/Command Base.blend" id="1_a47lk"]
 [ext_resource type="Material" uid="uid://mqxwb8bt8mpp" path="res://Materials/CommandBase.tres" id="2_o8aih"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/Earnings.gd" id="12_k5swf"]
 [ext_resource type="Script" path="res://Scripts/Actions/CreateUnitAction.gd" id="13_o15w5"]
 [ext_resource type="Texture2D" uid="uid://dfuj50vr62a64" path="res://Images/Drone Unit Face.png" id="14_3p45k"]
+[ext_resource type="Script" path="res://Scripts/Battle/DestroyOnNoHealth.gd" id="15_jaqe8"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mj6ht"]
 
@@ -98,3 +99,6 @@ script = ExtResource("12_k5swf")
 script = ExtResource("13_o15w5")
 Cost = 25.0
 ButtonPic = ExtResource("14_3p45k")
+
+[node name="DestroyOnNoHealth" type="Node3D" parent="." index="12"]
+script = ExtResource("15_jaqe8")

@@ -197,6 +197,8 @@ script = ExtResource("7_j618q")
 [node name="Controller" type="Node3D" parent="Managers/Player 2 Ai"]
 script = ExtResource("10_0826a")
 PlayerName = "Player 2"
+Confusion = 0.9
+Frequency = 10.0
 
 [node name="DoNothingAi" type="Node3D" parent="Managers/Player 2 Ai/Controller"]
 script = ExtResource("11_ovapl")
